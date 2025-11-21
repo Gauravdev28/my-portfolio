@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Portfolio | Premium Digital Experience</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f172a;
+            /* Premium Purple Palette */
+            --bg-color: #030014;
+            /* Deepest void purple */
             --text-color: #e2e8f0;
-            --accent-primary: #8b5cf6;
-            --accent-secondary: #3b82f6;
-            --glass-bg: rgba(30, 41, 59, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --card-bg: #1e293b;
+            --text-muted: #94a3b8;
+
+            --primary-purple: #7c3aed;
+            --primary-glow: #8b5cf6;
+            --secondary-pink: #ec4899;
+
+            --glass-bg: rgba(13, 12, 34, 0.7);
+            --glass-border: rgba(124, 58, 237, 0.1);
+            --card-bg: rgba(17, 14, 45, 0.6);
+
+            --gradient-main: linear-gradient(135deg, var(--primary-purple), var(--secondary-pink));
+            --gradient-text: linear-gradient(to right, #c084fc, #f472b6);
         }
 
         * {
@@ -32,12 +44,78 @@
             overflow-x: hidden;
         }
 
-        /* Smooth Scrolling */
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-purple);
+            border-radius: 5px;
+        }
+
+        /* Welcome Screen Overlay */
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s;
+        }
+
+        .welcome-content {
+            text-align: center;
+        }
+
+        .welcome-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: welcomeReveal 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .welcome-line {
+            width: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            margin: 1rem auto;
+            animation: lineGrow 1.5s ease-out 0.5s forwards;
+        }
+
+        @keyframes welcomeReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes lineGrow {
+            to {
+                width: 100px;
+            }
+        }
+
+        /* Main Content Styles */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Utilities */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -45,17 +123,21 @@
         }
 
         .section {
-            padding: 5rem 0;
+            padding: 6rem 0;
+            position: relative;
         }
 
-        h1, h2, h3 {
-            line-height: 1.2;
+        h1,
+        h2,
+        h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.1;
         }
 
         a {
             text-decoration: none;
             color: inherit;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         /* Navigation */
@@ -66,9 +148,9 @@
             width: 100%;
             z-index: 1000;
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 0;
+            padding: 1.2rem 0;
         }
 
         .nav-content {
@@ -78,20 +160,55 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+            letter-spacing: -1px;
+            background: var(--gradient-text);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-primary);
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .resume-btn {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--primary-purple);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .resume-btn:hover {
+            background: var(--primary-purple);
+            color: white;
+        }
+
+        .resume-btn::after {
+            display: none;
+            /* Remove underline effect for button */
         }
 
         /* Hero Section */
@@ -104,160 +221,273 @@
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        /* Ambient Background Glows */
+        .glow-blob {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
-            animation: pulse 10s infinite alternate;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
             z-index: -1;
+            animation: float 10s infinite ease-in-out;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.2); }
+        .blob-1 {
+            top: -20%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            bottom: -20%;
+            right: -10%;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+            animation-delay: 5s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, 50px);
+            }
         }
 
         .hero-content {
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
+            z-index: 1;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 5rem;
             margin-bottom: 1.5rem;
             font-weight: 700;
+            letter-spacing: -2px;
         }
 
         .hero h1 span {
-            background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+            background: var(--gradient-text);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: #94a3b8;
-            margin-bottom: 2.5rem;
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-btn {
             display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+            padding: 1.2rem 2.5rem;
+            background: var(--gradient-main);
             color: white;
             border-radius: 50px;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1.1rem;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.6);
         }
 
         /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
 
         .project-card {
             background: var(--card-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .project-card:hover::before {
+            transform: translateX(100%);
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-primary);
+            transform: translateY(-10px);
+            border-color: var(--primary-purple);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .project-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
+            color: #fff;
         }
 
         .project-card p {
-            color: #94a3b8;
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
         }
 
         .project-tags {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.8rem;
             flex-wrap: wrap;
         }
 
         .tag {
-            font-size: 0.875rem;
-            padding: 0.25rem 0.75rem;
-            background: rgba(139, 92, 246, 0.1);
-            color: var(--accent-primary);
+            font-size: 0.85rem;
+            padding: 0.4rem 1rem;
+            background: rgba(124, 58, 237, 0.15);
+            color: #d8b4fe;
+            border: 1px solid rgba(124, 58, 237, 0.2);
             border-radius: 20px;
         }
 
         /* Contact Section */
-        .contact {
-            text-align: center;
-        }
-
         .contact-form {
             max-width: 600px;
             margin: 3rem auto 0;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 1rem;
-            background: var(--card-bg);
+            padding: 1.2rem;
+            background: rgba(3, 0, 20, 0.6);
             border: 1px solid var(--glass-border);
-            border-radius: 0.5rem;
+            border-radius: 0.8rem;
             color: var(--text-color);
             font-family: inherit;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent-primary);
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 2rem 0;
+            padding: 3rem 0;
             border-top: 1px solid var(--glass-border);
             margin-top: 5rem;
-            color: #94a3b8;
+            color: var(--text-muted);
+            background: rgba(3, 0, 20, 0.8);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+            }
+
+            .welcome-text {
                 font-size: 2.5rem;
             }
-            
-            .nav-links {
-                display: none; /* Simple hide for mobile for this single file demo */
-            }
+        }
+
+        /* Social Links */
+        .social-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-purple);
+            background: rgba(124, 58, 237, 0.1);
+            box-shadow: 0 5px 20px rgba(124, 58, 237, 0.25);
+            color: #fff;
+        }
+
+        .social-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            transition: fill 0.3s ease;
         }
     </style>
 </head>
+
 <body>
+
+    <!-- Welcome Screen -->
+    <div id="welcome-screen">
+        <div class="welcome-content">
+            <div class="welcome-text">Welcome</div>
+            <div class="welcome-line"></div>
+        </div>
+    </div>
+
+    <!-- Ambient Background -->
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
 
     <!-- Navigation -->
     <nav>
@@ -266,7 +496,8 @@
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
+                <a href="#contact">Connect Us</a>
+                <a href="resume.html" class="resume-btn">Resume</a>
             </div>
         </div>
     </nav>
@@ -274,20 +505,30 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <h1>Building Digital <br><span>Experiences</span></h1>
-            <p>I'm a passionate developer crafting beautiful and functional web applications.</p>
-            <a href="#projects" class="cta-btn">View My Work</a>
+            <h1>Hi, I'm <span>Gaurav Agarwal</span></h1>
+            <p>Crafting Digital Masterpieces by AI Intelligence .</p>
+            <a href="#projects" class="cta-btn">Explore Work</a>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2>About Me</h2>
-            <div style="margin-top: 2rem; max-width: 700px;">
-                <p style="color: #94a3b8; font-size: 1.1rem;">
-                    Hello! I'm a creative developer based in [Your Location]. I specialize in building modern web applications using the latest technologies. 
-                    I love solving complex problems and turning ideas into reality through code. When I'm not coding, you can find me exploring new tech trends or designing user interfaces.
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">About Me</h2>
+            <div
+                style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--text-muted); font-size: 1.1rem;">
+                <p>
+                    I am a dedicated and aspiring developer based in Dholpur, fueled by a relentless passion for
+                    learning and growth.
+                    As a beginner in the tech world, I view every day as an opportunity to master something new.
+                    I am actively building my foundation in HTML, CSS, JavaScript, and C through rigorous hands-on
+                    projects.
+                </p>
+                <br>
+                <p>
+                    My approach is simple: learn, build, and improve. I am committed to turning my knowledge into
+                    functional, beautiful digital experiences. I am excited to carve out a successful career
+                    by solving meaningful problems with code and constantly pushing the boundaries of what I can create.
                 </p>
             </div>
         </div>
@@ -296,61 +537,102 @@
     <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="container">
-            <h2>Featured Projects</h2>
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Selected Works</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">A collection of my finest
+                digital creations</p>
+
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
-                    <h3>Project One</h3>
-                    <p>A stunning web application built with modern technologies. Features include real-time data, responsive design, and dark mode.</p>
+                    <h3>Amazon Clone</h3>
+                    <p>A full-stack e-commerce replica of Amazon with user authentication, product browsing, and cart
+                        functionality.</p>
                     <div class="project-tags">
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
                         <span class="tag">JavaScript</span>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
                 <div class="project-card">
-                    <h3>Project Two</h3>
-                    <p>An e-commerce platform with a custom shopping cart, payment integration, and user authentication system.</p>
+                    <h3>Netflix Clone</h3>
+                    <p>A responsive movie streaming app clone featuring dynamic content fetching from TMDB and trailer
+                        playback.</p>
                     <div class="project-tags">
-                        <span class="tag">React</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Stripe</span>
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
                 <div class="project-card">
-                    <h3>Project Three</h3>
-                    <p>A productivity dashboard helping users track tasks and manage time effectively with beautiful visualizations.</p>
+                    <h3>Portfolio Website</h3>
+                    <p>A personal portfolio site featuring a premium dark theme, glassmorphism UI, and responsive
+                        design.</p>
                     <div class="project-tags">
-                        <span class="tag">Vue.js</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">D3.js</span>
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Connect Section -->
     <section id="contact" class="section">
         <div class="container">
-            <h2>Get In Touch</h2>
-            <p style="color: #94a3b8; margin-top: 1rem;">Have a project in mind? Let's work together.</p>
-            
-            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks for your message! This is a demo form.');">
+            <h2 style="text-align: center; font-size: 2.5rem;">Connect With Me</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">
+                Let's build something amazing together. Check out my profiles or send a message.
+            </p>
+
+            <div class="social-container">
+                <a href="https://www.github.com/ramagl" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-1.455-3.795-1.455-.54-1.38-1.335-1.755-1.335-1.755-1.095-.75.09-.735.09-.735 1.2.09 1.83 1.23 1.83 1.23 1.08 1.86 2.805 1.32 3.495 1.005.105-.78.42-1.32.765-1.62-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/gauravvagl" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    LinkedIn
+                </a>
+            </div>
+
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+                <!-- Web3Forms Access Key -->
+                <input type="hidden" name="access_key" value="ea9d0bf7-8d01-4ff4-8223-4c6586a565e9">
+
+                <!-- Email Configuration -->
+                <input type="hidden" name="subject" value="New Contact from Portfolio">
+                <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
                 <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
+                    <input type="text" name="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" placeholder="Your Email" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <textarea name="message" rows="5" placeholder="Tell me about your project" required></textarea>
                 </div>
-                <button type="submit" class="cta-btn" style="border: none; cursor: pointer; width: 100%;">Send Message</button>
+
+                <!-- Honeypot Spam Protection -->
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                <button type="submit" class="cta-btn" style="width: 100%; border: none; cursor: pointer;">Send
+                    Message</button>
+
+                <div id="result"
+                    style="margin-top: 1rem; text-align: center; color: var(--primary-purple); display: none;"></div>
             </form>
         </div>
     </section>
@@ -358,31 +640,49 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+            <p>&copy; 2024 Gaurav Agarwal. Designed & Built with Passion.</p>
         </div>
     </footer>
 
     <script>
-        // Simple scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1
-        };
+        // Welcome Screen Logic
+        window.addEventListener('load', () => {
+            const welcomeScreen = document.getElementById('welcome-screen');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+            // Keep welcome screen for a moment to show animation
+            setTimeout(() => {
+                welcomeScreen.style.opacity = '0';
+                welcomeScreen.style.visibility = 'hidden';
 
-        document.querySelectorAll('.project-card, .section h2').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            observer.observe(el);
+                // Trigger main content animations after welcome screen fades
+                initScrollAnimations();
+            }, 2500);
         });
+
+        // Scroll Animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.project-card, .section h2, .hero-content').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                observer.observe(el);
+            });
+        }
     </script>
 </body>
+
 </html>

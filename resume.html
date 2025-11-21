@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Gaurav Agarwal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #030014;
+            --text-color: #e2e8f0;
+            --text-muted: #94a3b8;
+            --primary-purple: #7c3aed;
+            --card-bg: rgba(17, 14, 45, 0.6);
+            --glass-border: rgba(124, 58, 237, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 3rem;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 3px solid var(--primary-purple);
+            padding-left: 1rem;
+        }
+
+        .experience-item,
+        .project-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .item-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #e2e8f0;
+        }
+
+        .skill-list {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .download-btn {
+            display: block;
+            width: fit-content;
+            margin: 2rem auto 0;
+            padding: 0.8rem 2rem;
+            background: var(--primary-purple);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .container {
+                box-shadow: none;
+                border: none;
+            }
+
+            header h1 {
+                -webkit-text-fill-color: black;
+            }
+
+            .download-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Gaurav Agarwal</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">Frontend Developer & UI/UX Enthusiast</p>
+            <div class="contact-info">
+                <span>📍 Ram Kunj Colony Bari Road, Dholpur</span>
+                <a href="mailto:ramagl@icloud.com"
+                    style="color: inherit; text-decoration: none; transition: color 0.3s;">📧 ramagl@icloud.com</a>
+                <a href="https://github.com/ramagl" target="_blank"
+                    style="color: inherit; text-decoration: none; transition: color 0.3s;">🔗 github.com/ramagl</a>
+                <a href="https://www.linkedin.com/in/gauravvagl" target="_blank"
+                    style="color: inherit; text-decoration: none; transition: color 0.3s;">💼
+                    linkedin.com/in/gauravvagl</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>Professional Summary</h2>
+            <p style="color: var(--text-muted);">
+                Aspiring Frontend Developer and enthusiastic learner with a growing command of HTML, CSS, JavaScript,
+                and C.
+                I am dedicated to kickstarting my career by continuously upskilling and applying my knowledge to build
+                real-world projects.
+                With a strong work ethic and a 'learning-by-doing' mindset, I leverage my skills in AI Prompt
+                Engineering to accelerate development.
+                I am eager to bring my passion for clean code and creative problem-solving to a dynamic team where I can
+                contribute and evolve as a professional.
+            </p>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <ul class="skill-list">
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li>C Language</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Specialized Skills</h3>
+                    <ul class="skill-list">
+                        <li>AI Prompt Engineering</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Featured Projects</h2>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <span class="item-title">Amazon Clone</span>
+                </div>
+                <p style="color: var(--text-muted);">
+                    Built a high-fidelity frontend replica of the Amazon e-commerce platform.
+                    Focused on responsive layout implementation using CSS Flexbox and Grid, ensuring a seamless user
+                    experience across devices.
+                </p>
+            </div>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <span class="item-title">Netflix Clone</span>
+                </div>
+                <p style="color: var(--text-muted);">
+                    Developed a responsive user interface mimicking the Netflix streaming service.
+                    Implemented complex CSS animations and layout techniques to recreate the premium visual feel of the
+                    original platform.
+                </p>
+            </div>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <span class="item-title">Portfolio Website</span>
+                </div>
+                <p style="color: var(--text-muted);">
+                    Designed and developed a premium personal portfolio website. Features include a modern dark theme,
+                    glassmorphism effects, responsive layout, and interactive elements using vanilla JavaScript.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <div class="item-header">
+                    <span class="item-title">Web Development Intern</span>
+                    <span class="item-date">CodSoft</span>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">
+                    Completed a virtual internship focusing on web development tasks. Built responsive landing pages and
+                    interactive web applications using HTML, CSS, and JavaScript.
+                </p>
+                <a href="#" target="_blank"
+                    style="color: var(--primary-purple); text-decoration: none; font-size: 0.9rem; border-bottom: 1px dashed var(--primary-purple);">🔗
+                    View Certificate</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="experience-item">
+                <div class="item-header">
+                    <span class="item-title">Bachelor of Technology in Computer Science</span>
+                    <span class="item-date">2025 - 2029</span>
+                </div>
+                <p style="color: var(--text-muted);">ITM University Gwalior</p>
+            </div>
+        </section>
+
+        <section style="page-break-inside: avoid;">
+            <h2>Scan to Connect</h2>
+            <div style="display: flex; gap: 2rem; margin-top: 1rem;">
+                <div style="text-align: center;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://github.com/ramagl&color=7c3aed&bgcolor=030014"
+                        alt="GitHub QR Code"
+                        style="border: 2px solid var(--glass-border); border-radius: 10px; padding: 5px;">
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">GitHub</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.linkedin.com/in/gauravvagl&color=7c3aed&bgcolor=030014"
+                        alt="LinkedIn QR Code"
+                        style="border: 2px solid var(--glass-border); border-radius: 10px; padding: 5px;">
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">LinkedIn</p>
+                </div>
+            </div>
+        </section>
+
+        <a href="javascript:window.print()" class="download-btn">Download PDF</a>
+    </div>
+
+</body>
+
+</html>
