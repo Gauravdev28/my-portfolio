@@ -167,6 +167,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            z-index: 1001;
         }
 
         .nav-links {
@@ -209,6 +210,36 @@
         .resume-btn::after {
             display: none;
             /* Remove underline effect for button */
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-purple);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         /* Hero Section */
@@ -361,6 +392,7 @@
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
+            margin-bottom: 1.5rem;
         }
 
         .tag {
@@ -370,6 +402,183 @@
             color: #d8b4fe;
             border: 1px solid rgba(124, 58, 237, 0.2);
             border-radius: 20px;
+        }
+
+        /* Project Action Buttons */
+        .project-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .action-btn {
+            flex: 1;
+            min-width: 100px;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn:hover {
+            background: var(--primary-purple);
+            border-color: var(--primary-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .action-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .btn-preview {
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-pink));
+            border-color: transparent;
+        }
+
+        .btn-preview:hover {
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        /* Code Viewer Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 900px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .modal-header h3 {
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(124, 58, 237, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .code-container {
+            background: rgba(3, 0, 20, 0.8);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .code-container pre {
+            margin: 0;
+            color: #e2e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .code-language {
+            color: var(--primary-purple);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .copy-code-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--primary-purple);
+            border-radius: 5px;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-code-btn:hover {
+            background: var(--primary-purple);
         }
 
         /* Contact Section */
@@ -443,8 +652,38 @@
                 font-size: 1.1rem;
             }
 
+            .hamburger {
+                display: flex;
+            }
+
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--glass-bg);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                border-left: 1px solid var(--glass-border);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.3rem;
+                padding: 0.5rem 0;
+            }
+
+            .resume-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1.1rem;
             }
 
             .logo {
@@ -455,17 +694,39 @@
                 padding: 1.5rem;
             }
 
+            .action-btn {
+                font-size: 0.85rem;
+                padding: 0.6rem 1rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .modal-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .code-container {
+                padding: 1rem;
+            }
+
+            .code-container pre {
+                font-size: 0.8rem;
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
             .welcome-text {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .section {
-                padding: 4rem 0;
+                padding: 3rem 0;
             }
 
             .social-container {
@@ -476,26 +737,38 @@
             .social-btn {
                 width: 100%;
                 justify-content: center;
+                padding: 1.2rem 2rem;
+                font-size: 1rem;
             }
 
             .contact-form {
-                padding: 2rem;
+                padding: 2rem 1.5rem;
             }
 
             .cta-btn {
                 padding: 1rem 2rem;
                 font-size: 1rem;
             }
+
+            h2 {
+                font-size: 2rem !important;
+            }
+
+            .glow-blob {
+                width: 400px;
+                height: 400px;
+            }
         }
 
         /* Small Mobile (max-width: 480px) */
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 0.95rem;
+                padding: 0 0.5rem;
             }
 
             .container {
@@ -503,16 +776,60 @@
             }
 
             .contact-form {
-                padding: 1.5rem;
+                padding: 1.5rem 1rem;
             }
 
             .project-card h3 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
 
             .tag {
                 font-size: 0.75rem;
                 padding: 0.3rem 0.8rem;
+            }
+
+            .welcome-text {
+                font-size: 1.8rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .project-actions {
+                flex-direction: column;
+            }
+
+            .action-btn {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .modal.active {
+                padding: 0.5rem;
+            }
+
+            .modal-content {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+
+            .nav-links {
+                width: 80%;
+            }
+
+            h2 {
+                font-size: 1.6rem !important;
+            }
+
+            .social-btn {
+                font-size: 0.95rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .glow-blob {
+                width: 300px;
+                height: 300px;
             }
         }
 
@@ -575,7 +892,12 @@
     <nav>
         <div class="container nav-content">
             <a href="#" class="logo">Portfolio.</a>
-            <div class="nav-links">
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
                 <a href="#about">About</a>
                 <a href="#projects">Projects</a>
                 <a href="#contact">Connect Us</a>
@@ -635,6 +957,29 @@
                         <span class="tag">CSS3</span>
                         <span class="tag">JavaScript</span>
                     </div>
+                    <div class="project-actions">
+                        <a href="#" class="action-btn btn-preview" onclick="previewProject('amazon'); return false;">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                            </svg>
+                            Preview
+                        </a>
+                        <button class="action-btn" onclick="viewCode('amazon')">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+                            </svg>
+                            View Code
+                        </button>
+                        <button class="action-btn" onclick="downloadCode('amazon')">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />
+                            </svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Project 2 -->
@@ -647,6 +992,29 @@
                         <span class="tag">CSS3</span>
                         <span class="tag">JavaScript</span>
                     </div>
+                    <div class="project-actions">
+                        <a href="#" class="action-btn btn-preview" onclick="previewProject('netflix'); return false;">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                            </svg>
+                            Preview
+                        </a>
+                        <button class="action-btn" onclick="viewCode('netflix')">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+                            </svg>
+                            View Code
+                        </button>
+                        <button class="action-btn" onclick="downloadCode('netflix')">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />
+                            </svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Project 3 -->
@@ -658,6 +1026,29 @@
                         <span class="tag">HTML5</span>
                         <span class="tag">CSS3</span>
                         <span class="tag">JavaScript</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="action-btn btn-preview" onclick="previewProject('portfolio'); return false;">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                            </svg>
+                            Preview
+                        </a>
+                        <button class="action-btn" onclick="viewCode('portfolio')">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+                            </svg>
+                            View Code
+                        </button>
+                        <button class="action-btn" onclick="downloadCode('portfolio')">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />
+                            </svg>
+                            Download
+                        </button>
                     </div>
                 </div>
             </div>
@@ -727,6 +1118,23 @@
         </div>
     </footer>
 
+    <!-- Code Viewer Modal -->
+    <div class="modal" id="codeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Project Code</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="code-header">
+                <span class="code-language" id="codeLanguage">HTML</span>
+                <button class="copy-code-btn" onclick="copyCode()">Copy Code</button>
+            </div>
+            <div class="code-container">
+                <pre id="codeContent"></pre>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Welcome Screen Logic
         window.addEventListener('load', () => {
@@ -740,6 +1148,31 @@
                 // Trigger main content animations after welcome screen fades
                 initScrollAnimations();
             }, 2500);
+        });
+
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
         });
 
         // Scroll Animations
@@ -765,6 +1198,205 @@
                 observer.observe(el);
             });
         }
+
+        // Project Code Database
+        const projectCodes = {
+            amazon: {
+                title: 'Amazon Clone',
+                language: 'HTML',
+                code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="amazon-logo.png" alt="Amazon">
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Amazon">
+                <button>Search</button>
+            </div>
+            <div class="nav-links">
+                <a href="#">Account</a>
+                <a href="#">Cart</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Welcome to Amazon Clone</h1>
+            <p>Shop the best products at amazing prices</p>
+        </section>
+        <section class="products">
+            <!-- Product cards here -->
+        </section>
+    </main>
+    <script src="script.js"><\/script>
+</body>
+</html>`,
+                preview: 'https://github.com/ramagl'
+            },
+            netflix: {
+                title: 'Netflix Clone',
+                language: 'HTML',
+                code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="showcase">
+        <div class="showcase-top">
+            <img src="netflix-logo.png" alt="Netflix">
+            <a href="#" class="btn">Sign In</a>
+        </div>
+        <div class="showcase-content">
+            <h1>Unlimited movies, TV shows, and more</h1>
+            <p>Watch anywhere. Cancel anytime.</p>
+            <form class="email-form">
+                <input type="email" placeholder="Email address">
+                <button class="btn-xl">Get Started</button>
+            </form>
+        </div>
+    </header>
+    <section class="movies">
+        <h2>Trending Now</h2>
+        <div class="movie-grid">
+            <!-- Movie cards here -->
+        </div>
+    </section>
+    <script src="script.js"><\/script>
+</body>
+</html>`,
+                preview: 'https://github.com/ramagl'
+            },
+            portfolio: {
+                title: 'Portfolio Website',
+                language: 'HTML',
+                code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="hero">
+        <h1>Hi, I'm <span>Your Name</span></h1>
+        <p>Full Stack Developer & Designer</p>
+        <a href="#projects" class="cta-btn">View My Work</a>
+    </section>
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            <!-- Project cards here -->
+        </div>
+    </section>
+    <script src="script.js"><\/script>
+</body>
+</html>`,
+                preview: 'index.html'
+            }
+        };
+
+        // View Code Function
+        function viewCode(projectName) {
+            const project = projectCodes[projectName];
+            if (!project) return;
+
+            document.getElementById('modalTitle').textContent = project.title + ' - Code';
+            document.getElementById('codeLanguage').textContent = project.language;
+            document.getElementById('codeContent').textContent = project.code;
+            document.getElementById('codeModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal Function
+        function closeModal() {
+            document.getElementById('codeModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Copy Code Function
+        function copyCode() {
+            const codeContent = document.getElementById('codeContent').textContent;
+            navigator.clipboard.writeText(codeContent).then(() => {
+                const btn = document.querySelector('.copy-code-btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.style.background = 'var(--primary-purple)';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = 'rgba(124, 58, 237, 0.2)';
+                }, 2000);
+            });
+        }
+
+        // Download Code Function
+        function downloadCode(projectName) {
+            const project = projectCodes[projectName];
+            if (!project) return;
+
+            const blob = new Blob([project.code], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${projectName}-clone.html`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+
+            // Show success message
+            alert(`✅ ${project.title} code downloaded successfully!`);
+        }
+
+        // Preview Project Function
+        function previewProject(projectName) {
+            const project = projectCodes[projectName];
+            if (!project) return;
+
+            // Open preview in new tab
+            window.open(project.preview, '_blank');
+        }
+
+        // Initialize modal event listeners after DOM is loaded
+        window.addEventListener('DOMContentLoaded', function () {
+            // Close modal when clicking outside
+            const modal = document.getElementById('codeModal');
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target.id === 'codeModal') {
+                        closeModal();
+                    }
+                });
+            }
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        });
     </script>
 </body>
 

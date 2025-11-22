@@ -145,6 +145,78 @@
             transform: translateY(-2px);
         }
 
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                padding: 2rem 1.5rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            section h2 {
+                font-size: 1.3rem;
+            }
+
+            .item-header {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .download-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+                border-radius: 0.5rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem !important;
+            }
+
+            section h2 {
+                font-size: 1.1rem;
+                padding-left: 0.8rem;
+            }
+
+            .item-title {
+                font-size: 1rem;
+            }
+
+            .contact-info {
+                font-size: 0.8rem;
+            }
+        }
+
         @media print {
             body {
                 background: white;
