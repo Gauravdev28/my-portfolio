@@ -1781,6 +1781,7 @@ function layoutBlock(nodes, x, startY) {
 
     return curY;
 }\`,
+},
                 preview: 'flowcode/index.html'
             },
             portfolio: {
@@ -1814,94 +1815,95 @@ function layoutBlock(nodes, x, startY) {
                                             <!-- Project cards here -->
                                         </div>
                                     </section>
-                                    <script src="script.js"><\/script>
-                                </body>
-                            </html>`,
-                            preview: 'index.html'
-            }
-        };
+                                    <script src="script.js"></script>
+</body>
 
-                            // View Code Function
-                            function viewCode(projectName) {
-            const project = projectCodes[projectName];
-                            if (!project) return;
+</html>`,
+preview: 'index.html'
+}
+};
 
-                            document.getElementById('modalTitle').textContent = project.title + ' - Code';
-                            document.getElementById('codeLanguage').textContent = project.language;
-                            document.getElementById('codeContent').textContent = project.code;
-                            document.getElementById('codeModal').classList.add('active');
-                            document.body.style.overflow = 'hidden';
-        }
+// View Code Function
+function viewCode(projectName) {
+const project = projectCodes[projectName];
+if (!project) return;
 
-                            // Close Modal Function
-                            function closeModal() {
-                                document.getElementById('codeModal').classList.remove('active');
-                            document.body.style.overflow = 'auto';
-        }
+document.getElementById('modalTitle').textContent = project.title + ' - Code';
+document.getElementById('codeLanguage').textContent = project.language;
+document.getElementById('codeContent').textContent = project.code;
+document.getElementById('codeModal').classList.add('active');
+document.body.style.overflow = 'hidden';
+}
 
-                            // Copy Code Function
-                            function copyCode() {
-            const codeContent = document.getElementById('codeContent').textContent;
-            navigator.clipboard.writeText(codeContent).then(() => {
-                const btn = document.querySelector('.copy-code-btn');
-                            const originalText = btn.textContent;
-                            btn.textContent = 'Copied!';
-                            btn.style.background = 'var(--primary-purple)';
-                setTimeout(() => {
-                                btn.textContent = originalText;
-                            btn.style.background = 'rgba(124, 58, 237, 0.2)';
-                }, 2000);
-            });
-        }
+// Close Modal Function
+function closeModal() {
+document.getElementById('codeModal').classList.remove('active');
+document.body.style.overflow = 'auto';
+}
 
-                            // Download Code Function
-                            function downloadCode(projectName) {
-            const project = projectCodes[projectName];
-                            if (!project) return;
+// Copy Code Function
+function copyCode() {
+const codeContent = document.getElementById('codeContent').textContent;
+navigator.clipboard.writeText(codeContent).then(() => {
+const btn = document.querySelector('.copy-code-btn');
+const originalText = btn.textContent;
+btn.textContent = 'Copied!';
+btn.style.background = 'var(--primary-purple)';
+setTimeout(() => {
+btn.textContent = originalText;
+btn.style.background = 'rgba(124, 58, 237, 0.2)';
+}, 2000);
+});
+}
 
-                            const blob = new Blob([project.code], {type: 'text/html' });
-                            const url = window.URL.createObjectURL(blob);
-                            const a = document.createElement('a');
-                            a.href = url;
-                            a.download = `${projectName}-clone.html`;
-                            document.body.appendChild(a);
-                            a.click();
-                            document.body.removeChild(a);
-                            window.URL.revokeObjectURL(url);
+// Download Code Function
+function downloadCode(projectName) {
+const project = projectCodes[projectName];
+if (!project) return;
 
-                            // Show success message
-                            alert(`✅ ${project.title} code downloaded successfully!`);
-        }
+const blob = new Blob([project.code], {type: 'text/html' });
+const url = window.URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+a.download = `${projectName}-clone.html`;
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+window.URL.revokeObjectURL(url);
 
-                            // Preview Project Function
-                            function previewProject(projectName) {
-            const project = projectCodes[projectName];
-                            if (!project) return;
+// Show success message
+alert(`✅ ${project.title} code downloaded successfully!`);
+}
 
-                            // Open preview in new tab
-                            window.open(project.preview, '_blank');
-        }
+// Preview Project Function
+function previewProject(projectName) {
+const project = projectCodes[projectName];
+if (!project) return;
 
-                            // Initialize modal event listeners after DOM is loaded
-                            window.addEventListener('DOMContentLoaded', function () {
-            // Close modal when clicking outside
-            const modal = document.getElementById('codeModal');
-                            if (modal) {
-                                modal.addEventListener('click', (e) => {
-                                    if (e.target.id === 'codeModal') {
-                                        closeModal();
-                                    }
-                                });
-            }
+// Open preview in new tab
+window.open(project.preview, '_blank');
+}
 
-            // Close modal with Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                                closeModal();
-                }
-            });
-        });
-    </script>
+// Initialize modal event listeners after DOM is loaded
+window.addEventListener('DOMContentLoaded', function () {
+// Close modal when clicking outside
+const modal = document.getElementById('codeModal');
+if (modal) {
+modal.addEventListener('click', (e) => {
+if (e.target.id === 'codeModal') {
+closeModal();
+}
+});
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape') {
+closeModal();
+}
+});
+});
+</script>
 </body>
 
 </html>
