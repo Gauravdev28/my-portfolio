@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowCode</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🔷 FlowCode</h1>
+            <p>Paste your C code and get an instant flowchart</p>
+            <div style="margin-top: 10px;">
+                <span
+                    style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">
+                    ✨ Created by Gaurav
+                </span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Code Input Section -->
+            <section class="input-section">
+                <div class="section-header">
+                    <h2>Your C Code</h2>
+                    <div class="buttons">
+                        <button id="loadExample" class="btn-secondary">Load Example</button>
+                        <button id="generateBtn" class="btn-primary">Generate Flowchart</button>
+                    </div>
+                </div>
+                <textarea id="codeInput" placeholder="// Paste your C code here...
+
+int main() {
+    int num;
+    printf(&quot;Enter number: &quot;);
+    scanf(&quot;%d&quot;, &num);
+    
+    if (num > 0) {
+        printf(&quot;Positive&quot;);
+    } else {
+        printf(&quot;Negative&quot;);
+    }
+    
+    return 0;
+}"></textarea>
+            </section>
+
+            <!-- Flowchart Output Section -->
+            <section class="output-section">
+                <div class="section-header">
+                    <h2>Flowchart</h2>
+                    <div class="buttons">
+                        <button id="zoomOut" class="btn-icon" title="Zoom Out">−</button>
+                        <button id="zoomIn" class="btn-icon" title="Zoom In">+</button>
+                        <button id="downloadBtn" class="btn-secondary">Download</button>
+                    </div>
+                </div>
+                <div id="flowchartCanvas" class="canvas">
+                    <div class="placeholder">
+                        <svg width="100" height="100" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="#ddd" stroke-width="3" />
+                            <path d="M50 30 L50 70 M30 50 L70 50" stroke="#ddd" stroke-width="3" />
+                        </svg>
+                        <p>Your flowchart will appear here</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p style="font-size: 1.1rem; font-weight: 500;">Designed & Developed by <strong
+                    style="color: #38ef7d;">Gaurav</strong> 🚀</p>
+
+            <p class="connect-title">Connect with me</p>
+            <div class="social-links">
+                <a href="https://www.github.com/ramagll" target="_blank" class="social-link">
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/gauravvagl" target="_blank" class="social-link">
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 5px;">&copy; 2025 FlowCode</p>
+        </footer>
+        <!-- AI Assistant Modal -->
+        <div id="aiModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>🤖 AI Assistant</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p id="aiMessage">I noticed some issues in your code.</p>
+                    <div id="aiSuggestion" class="code-block"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnFix" class="btn-primary">✨ Fix & Generate</button>
+                    <button id="btnIgnore" class="btn-secondary">Ignore</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

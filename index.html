@@ -984,30 +984,30 @@
 
                 <!-- Project 2 -->
                 <div class="project-card">
-                    <h3>Netflix Clone</h3>
-                    <p>A responsive movie streaming app clone featuring dynamic content fetching from TMDB and trailer
-                        playback.</p>
+                    <h3>Flowcode</h3>
+                    <p>An intelligent tool that automatically converts C programming code into visual flowcharts for
+                        better logic visualization.</p>
                     <div class="project-tags">
-                        <span class="tag">HTML5</span>
-                        <span class="tag">CSS3</span>
                         <span class="tag">JavaScript</span>
+                        <span class="tag">Mermaid.js</span>
+                        <span class="tag">Regex</span>
                     </div>
                     <div class="project-actions">
-                        <a href="#" class="action-btn btn-preview" onclick="previewProject('netflix'); return false;">
+                        <a href="#" class="action-btn btn-preview" onclick="previewProject('flowcode'); return false;">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
                             </svg>
                             Preview
                         </a>
-                        <button class="action-btn" onclick="viewCode('netflix')">
+                        <button class="action-btn" onclick="viewCode('flowcode')">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
                             </svg>
                             View Code
                         </button>
-                        <button class="action-btn" onclick="downloadCode('netflix')">
+                        <button class="action-btn" onclick="downloadCode('flowcode')">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />
@@ -1242,42 +1242,51 @@
 </html>`,
                 preview: 'https://github.com/ramagl'
             },
-            netflix: {
-                title: 'Netflix Clone',
-                language: 'HTML',
-                code: `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix Clone</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header class="showcase">
-        <div class="showcase-top">
-            <img src="netflix-logo.png" alt="Netflix">
-            <a href="#" class="btn">Sign In</a>
-        </div>
-        <div class="showcase-content">
-            <h1>Unlimited movies, TV shows, and more</h1>
-            <p>Watch anywhere. Cancel anytime.</p>
-            <form class="email-form">
-                <input type="email" placeholder="Email address">
-                <button class="btn-xl">Get Started</button>
-            </form>
-        </div>
-    </header>
-    <section class="movies">
-        <h2>Trending Now</h2>
-        <div class="movie-grid">
-            <!-- Movie cards here -->
-        </div>
-    </section>
-    <script src="script.js"><\/script>
-</body>
-</html>`,
-                preview: 'https://github.com/ramagl'
+            flowcode: {
+                title: 'Flowcode',
+                language: 'JavaScript',
+                code: `/**
+ * FlowCode - Advanced C to Flowchart Converter
+ * 
+ * Features:
+ * - AI Syntax Analysis & Auto-Fix
+ * - Recursive AST Parsing
+ * - Grid-Based Layout Engine for Perfect Alignment
+ * - Smart Orthogonal Arrow Routing
+ */
+
+// --- DOM ELEMENTS ---
+const codeInput = document.getElementById('codeInput');
+const generateBtn = document.getElementById('generateBtn');
+const loadExampleBtn = document.getElementById('loadExample');
+const flowchartCanvas = document.getElementById('flowchartCanvas');
+
+// ... (Full source code available in flowcode/script.js)
+
+function generateFlowchart(code) {
+    const nodes = parseCode(code);
+    const container = document.getElementById('flowchartCanvas');
+    container.innerHTML = '';
+
+    // Start Layout
+    const maxY = layoutBlock(nodes, 400, 50);
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'connector');
+    svg.style.height = (maxY + 200) + 'px';
+    svg.style.width = '100%';
+    svg.innerHTML = svgHTML;
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'flowchart';
+    wrapper.style.height = (maxY + 200) + 'px';
+    wrapper.style.width = '1500px'; // Wide canvas
+    wrapper.innerHTML = divHTML;
+    wrapper.appendChild(svg);
+
+    container.appendChild(wrapper);
+}`,
+                preview: 'flowcode/index.html'
             },
             portfolio: {
                 title: 'Portfolio Website',
