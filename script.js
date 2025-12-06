@@ -82,7 +82,7 @@ const projectCodes = {
     <script src="script.js"><\/script>
 </body>
 </html>`,
-        preview: 'https://github.com/ramagl'
+        preview: 'https://github.com/Gauravdev28'
     },
     flowcode: {
         title: 'Flowcode',
