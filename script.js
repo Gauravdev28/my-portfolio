@@ -1,3 +1,24 @@
+// Welcome Screen Logic
+const welcomeScreen = document.getElementById('welcome-screen');
+const enterBtn = document.getElementById('enter-portfolio');
+
+if (enterBtn && welcomeScreen) {
+    enterBtn.addEventListener('click', () => {
+        welcomeScreen.classList.add('hidden');
+        document.body.classList.add('portfolio-active');
+        // Enable scrolling after entry
+        document.body.style.overflow = 'auto';
+
+        // Remove from DOM calculation after animation
+        setTimeout(() => {
+            welcomeScreen.style.display = 'none';
+        }, 1000);
+    });
+}
+
+// Initial state: prevent scrolling while welcome screen is active
+document.body.style.overflow = 'hidden';
+
 // Navigation Scroll Effect
 window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');

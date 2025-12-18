@@ -16,34 +16,47 @@
 <body>
     <!-- Welcome Screen / Entry Page -->
     <div id="welcome-screen" class="welcome-overlay">
+        <!-- Decorative Circles -->
+        <div class="welcome-circle circle-1"></div>
+        <div class="welcome-circle circle-2"></div>
+        <div class="welcome-circle circle-3"></div>
+
         <div class="welcome-content">
             <div class="welcome-visuals">
-                <div class="welcome-year">
+                <div class="welcome-year-v">
                     <div class="line"></div>
                     <span>2025</span>
                 </div>
-                <div class="welcome-circle-bg"></div>
-                <div class="welcome-img-container">
-                    <img src="professional_portrait_bw_1766063417094.png" alt="Welcome Image">
+
+                <div class="welcome-images-stagger">
+                    <div class="img-main">
+                        <img src="professional_portrait_bw_1766063417094.png" alt="Main Portrait">
+                    </div>
+                    <div class="img-secondary">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600"
+                            alt="Secondary Visual">
+                    </div>
                 </div>
             </div>
 
             <div class="welcome-text-side">
-                <div class="welcome-header-line"></div>
-                <h1 class="welcome-title">CREATIVE<br>PORTFOLIO</h1>
+                <div class="welcome-header-line-v"></div>
+                <h1 class="welcome-title-v">CREATIVE<br>PORTFOLIO</h1>
 
-                <div class="welcome-intro">
-                    <h2 class="welcome-name">Hi, I'm Gaurav Agarwal a<br>Full Stack Developer</h2>
-                    <p class="welcome-desc">I am a dedicated and aspiring developer fueled by a relentless passion for
+                <div class="welcome-intro-v">
+                    <p class="welcome-hi-v">Hi, I'm Gaurav Agarwal a<br>Full Stack Developer</p>
+                    <p class="welcome-desc-v">I am a dedicated and aspiring developer fueled by a relentless passion for
                         learning and growth. Committed to turning knowledge into functional, beautiful digital
                         experiences.</p>
                 </div>
 
-                <button id="enter-portfolio" class="enter-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                </button>
+                <div class="enter-btn-wrapper">
+                    <button id="enter-portfolio" class="enter-btn-v">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

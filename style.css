@@ -33,7 +33,8 @@ body::before {
     opacity: 0.18;
     /* Cinematic film-grain */
     pointer-events: none;
-    z-index: 9999;
+    z-index: 10001;
+    /* Above welcome overlay */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -59,115 +60,170 @@ body::before {
     pointer-events: none;
 }
 
+/* Decorative Circles from Reference */
+.welcome-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 209, 255, 0.15) 0%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.circle-1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -100px;
+    opacity: 0.6;
+}
+
+.circle-2 {
+    width: 300px;
+    height: 300px;
+    top: 50px;
+    left: -50px;
+    opacity: 0.4;
+}
+
+.circle-3 {
+    width: 600px;
+    height: 600px;
+    right: -200px;
+    top: -100px;
+    opacity: 0.5;
+}
+
 .welcome-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10rem;
+    gap: 0;
     max-width: 1400px;
-    width: 90%;
+    width: 100%;
+    height: 100%;
     align-items: center;
+    padding: 0 8rem;
+    position: relative;
+    z-index: 2;
 }
 
 .welcome-visuals {
     position: relative;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.welcome-year-v {
+    position: absolute;
+    left: -60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    writing-mode: vertical-rl;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+.welcome-year-v .line {
+    width: 1px;
+    height: 60px;
+    background: #fff;
+}
+
+.welcome-images-stagger {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.welcome-year {
-    position: absolute;
-    left: -100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    font-family: var(--font-mono);
-    font-size: 1.2rem;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    color: var(--text-muted);
-}
-
-.welcome-year .line {
-    width: 1px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.welcome-circle-bg {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(0, 209, 255, 0.15) 0%, transparent 70%);
-    filter: blur(50px);
-    z-index: -1;
-    top: -100px;
-    right: -100px;
-}
-
-.welcome-img-container {
-    width: 100%;
-    max-width: 500px;
-    aspect-ratio: 1/1;
+.img-main {
+    width: 450px;
+    height: 550px;
+    border-radius: 30px;
     overflow: hidden;
-    border-radius: 40px;
-    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 3;
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
     background: #111;
 }
 
-.welcome-img-container img {
+.img-secondary {
+    position: absolute;
+    width: 350px;
+    height: 400px;
+    background: #111;
+    border-radius: 30px;
+    left: -50px;
+    bottom: 50px;
+    z-index: 2;
+    overflow: hidden;
+    opacity: 0.6;
+}
+
+.img-main img,
+.img-secondary img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(1) contrast(1.2);
+    filter: grayscale(1) contrast(1.1);
 }
 
 .welcome-text-side {
+    padding-left: 4rem;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 4rem;
 }
 
-.welcome-header-line {
+.welcome-header-line-v {
     width: 100px;
     height: 1px;
     background: #fff;
 }
 
-.welcome-title {
+.welcome-title-v {
     font-family: var(--font-heading);
     font-size: 8rem;
     font-weight: 700;
-    line-height: 0.9;
+    line-height: 0.85;
     letter-spacing: -4px;
     color: #fff;
+    text-transform: uppercase;
 }
 
-.welcome-intro {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    max-width: 500px;
-}
-
-.welcome-name {
+.welcome-hi-v {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--accent-blue);
-    font-style: italic;
+    margin-bottom: 2rem;
     font-weight: 500;
 }
 
-.welcome-desc {
+.welcome-desc-v {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 450px;
 }
 
-.enter-btn {
-    width: 60px;
-    height: 60px;
+.enter-btn-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.enter-btn-v {
+    width: 50px;
+    height: 50px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
@@ -177,20 +233,53 @@ body::before {
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 2rem;
-    align-self: flex-end;
 }
 
-.enter-btn:hover {
+.enter-btn-v:hover {
     background: var(--accent-blue);
     border-color: var(--accent-blue);
     color: #000;
-    transform: translateX(10px);
+    transform: scale(1.1);
 }
 
-.enter-btn svg {
-    width: 24px;
-    height: 24px;
+@media (max-width: 1200px) {
+    .welcome-content {
+        padding: 0 4rem;
+    }
+
+    .welcome-title-v {
+        font-size: 6rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .welcome-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .img-main {
+        width: 300px;
+        height: 400px;
+        margin: 0 auto;
+    }
+
+    .img-secondary {
+        display: none;
+    }
+
+    .welcome-text-side {
+        padding-left: 0;
+        align-items: center;
+    }
+
+    .welcome-year-v {
+        display: none;
+    }
+
+    .welcome-title-v {
+        font-size: 4rem;
+    }
 }
 
 /* Atmospheric Cinematic Background Glows */
@@ -203,9 +292,9 @@ body::before {
     z-index: -1;
     pointer-events: none;
     overflow: hidden;
-    background: radial-gradient(circle at 20% 30%, rgba(0, 209, 255, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 50% 80%, rgba(0, 209, 255, 0.05) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 30%, rgba(0, 209, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 209, 255, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 50% 80%, rgba(0, 209, 255, 0.1) 0%, transparent 50%);
 }
 
 .container {
@@ -221,7 +310,7 @@ main {
     transform: scale(0.95);
 }
 
-body:has(.welcome-overlay.hidden) main {
+body.portfolio-active main {
     opacity: 1;
     transform: scale(1);
 }
@@ -233,7 +322,7 @@ body:has(.welcome-overlay.hidden) main {
     transition: all 0.8s ease 0.5s;
 }
 
-body:has(.welcome-overlay.hidden) #navbar {
+body.portfolio-active #navbar {
     opacity: 1;
     transform: translateY(0);
 }
@@ -863,7 +952,7 @@ nav.scrolled {
     left: -10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 209, 255, 0.1) 0%, transparent 70%);
     z-index: -1;
     filter: blur(80px);
 }
