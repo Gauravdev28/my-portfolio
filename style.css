@@ -495,6 +495,12 @@ nav.scrolled {
     padding: 0.8rem 1.5rem;
     font-weight: 700;
     text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
 }
 
 .nav-links {
@@ -630,20 +636,22 @@ nav.scrolled {
 
 .hero-name {
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-size: clamp(3.5rem, 9vw, 8rem);
     font-weight: 700;
     line-height: 0.85;
-    margin-bottom: 2.5rem;
-    letter-spacing: -2px;
+    margin-bottom: 2rem;
+    letter-spacing: -3px;
+    text-transform: uppercase;
 }
 
 .hello-tag {
     color: var(--accent-blue);
     font-family: var(--font-mono);
     font-style: italic;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     display: block;
     font-size: 1.2rem;
+    letter-spacing: 2px;
 }
 
 .professional-tag {
@@ -655,7 +663,8 @@ nav.scrolled {
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 2.5rem;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
 }
 
 .hero-desc {
@@ -667,19 +676,32 @@ nav.scrolled {
 
 .hero-image-container {
     position: relative;
-    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .hero-img {
     width: 100%;
+    max-width: 700px;
     height: auto;
     z-index: 1;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.5s ease;
+    filter: brightness(1.1) contrast(1.1);
 }
 
-.hero-image-container:hover .hero-img {
-    transform: scale(1.05);
+.image-glow {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.4) 0%, rgba(0, 209, 255, 0.2) 40%, transparent 70%);
+    filter: blur(100px);
+    z-index: 0;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 /* Biography / About */
