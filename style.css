@@ -687,8 +687,13 @@ nav.scrolled {
     height: auto;
     z-index: 1;
     object-fit: contain;
-    transition: transform 0.5s ease;
-    filter: brightness(1.1) contrast(1.1);
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    filter: grayscale(1) contrast(1.1) brightness(0.8);
+}
+
+.hero-image-container:hover .hero-img {
+    transform: translateY(-20px) scale(1.02);
+    filter: grayscale(0) contrast(1) brightness(1.1) drop-shadow(0 20px 40px rgba(0, 209, 255, 0.3));
 }
 
 .image-glow {
@@ -726,6 +731,13 @@ nav.scrolled {
     height: auto;
     position: relative;
     z-index: 2;
+    filter: grayscale(1) contrast(1.1) brightness(0.8);
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.bio-image-wrapper:hover .bio-img {
+    transform: translateY(-15px) scale(1.02);
+    filter: grayscale(0) contrast(1) brightness(1.1);
 }
 
 .dot-grid {
