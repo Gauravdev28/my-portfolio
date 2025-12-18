@@ -8,16 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;500;700&family=Space+Mono&display=swap"
         rel="stylesheet">
     <style>
         :root {
-            --bg-color: #030014;
-            --text-color: #e2e8f0;
-            --text-muted: #94a3b8;
-            --primary-purple: #7c3aed;
-            --card-bg: rgba(17, 14, 45, 0.6);
-            --glass-border: rgba(124, 58, 237, 0.1);
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --text-muted: #a0a0a0;
+            --accent-blue: #00d1ff;
+            --font-main: 'Outfit', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(0, 209, 255, 0.2);
         }
 
         * {
@@ -27,193 +30,281 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: var(--font-main);
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
             padding: 4rem 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Cinematic Grain Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background: var(--card-bg);
+            background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            padding: 3rem;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            padding: 5rem;
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
         }
 
         h1,
         h2,
         h3 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: var(--font-heading);
             color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         header {
-            text-align: center;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 2rem;
-            margin-bottom: 2rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 3.5rem;
+            margin-bottom: 3.5rem;
         }
 
         header h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, #c084fc, #f472b6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 4.5rem;
+            line-height: 0.85;
+            margin-bottom: 1.5rem;
+            letter-spacing: -3px;
+            font-weight: 700;
+        }
+
+        .role-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 6px 16px;
+            border: 1px solid var(--accent-blue);
+            background: rgba(0, 209, 255, 0.05);
+            text-transform: uppercase;
         }
 
         .contact-info {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-blue);
+            transform: translateX(5px);
         }
 
         section {
-            margin-bottom: 2.5rem;
+            margin-bottom: 4.5rem;
         }
 
         section h2 {
-            font-size: 1.5rem;
-            color: var(--primary-purple);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-left: 3px solid var(--primary-purple);
-            padding-left: 1rem;
+            font-size: 1.1rem;
+            color: var(--accent-blue);
+            margin-bottom: 2.5rem;
+            letter-spacing: 5px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-weight: 500;
+        }
+
+        section h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(0, 209, 255, 0.4), transparent);
+        }
+
+        .bio-summary {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
         }
 
         .experience-item,
         .project-item {
-            margin-bottom: 1.5rem;
+            margin-bottom: 3rem;
+            position: relative;
         }
 
         .item-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            align-items: baseline;
+            margin-bottom: 1rem;
         }
 
         .item-title {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.4rem;
+            color: #fff;
+            letter-spacing: -0.5px;
         }
 
         .item-date {
+            color: var(--accent-blue);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+        }
+
+        .item-desc {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 1rem;
+            line-height: 1.7;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
         }
 
         .skill-category h3 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            color: #e2e8f0;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            font-family: var(--font-mono);
+            letter-spacing: 2px;
+            opacity: 0.6;
         }
 
         .skill-list {
             list-style: none;
-            color: var(--text-muted);
-            font-size: 0.95rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 6px 14px;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            color: var(--text-color);
+            font-family: var(--font-mono);
+            transition: all 0.3s ease;
+        }
+
+        .skill-pill:hover {
+            border-color: var(--accent-blue);
+            background: rgba(0, 209, 255, 0.05);
+            color: var(--accent-blue);
+        }
+
+        .qr-section {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .qr-item {
+            text-align: center;
+        }
+
+        .qr-item img {
+            width: 80px;
+            height: 80px;
+            filter: brightness(0) invert(1) opacity(0.8);
+            margin-bottom: 1rem;
+            padding: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .qr-item p {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .download-btn {
             display: block;
             width: fit-content;
-            margin: 2rem auto 0;
-            padding: 0.8rem 2rem;
-            background: var(--primary-purple);
-            color: white;
+            margin: 5rem auto 0;
+            padding: 1.2rem 4rem;
+            background: transparent;
+            color: #fff;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: transform 0.2s;
+            border: 1px solid var(--accent-blue);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            text-transform: uppercase;
+            position: relative;
+            z-index: 5;
         }
 
         .download-btn:hover {
-            transform: translateY(-2px);
+            background: var(--accent-blue);
+            color: #000;
+            box-shadow: 0 0 50px rgba(0, 209, 255, 0.4);
+            transform: translateY(-5px);
         }
 
-        /* Mobile Responsive Styles */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             body {
                 padding: 2rem 1rem;
             }
 
             .container {
-                padding: 2rem 1.5rem;
+                padding: 3rem 2rem;
             }
 
             header h1 {
-                font-size: 2rem;
+                font-size: 3rem;
             }
 
             .contact-info {
-                flex-direction: column;
-                gap: 0.8rem;
-                font-size: 0.85rem;
-            }
-
-            section h2 {
-                font-size: 1.3rem;
-            }
-
-            .item-header {
-                flex-direction: column;
-                gap: 0.3rem;
-            }
-
-            .skills-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1rem;
             }
 
-            .download-btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 1rem 0.5rem;
-            }
-
-            .container {
-                padding: 1.5rem 1rem;
-                border-radius: 0.5rem;
-            }
-
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            header p {
-                font-size: 1rem !important;
-            }
-
-            section h2 {
-                font-size: 1.1rem;
-                padding-left: 0.8rem;
-            }
-
-            .item-title {
-                font-size: 1rem;
-            }
-
-            .contact-info {
-                font-size: 0.8rem;
+            .qr-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
             }
         }
 
@@ -221,15 +312,56 @@
             body {
                 background: white;
                 color: black;
+                padding: 0;
+            }
+
+            body::before {
+                display: none;
             }
 
             .container {
+                max-width: 100%;
                 box-shadow: none;
                 border: none;
+                padding: 3rem;
+                background: white;
+                backdrop-filter: none;
             }
 
-            header h1 {
-                -webkit-text-fill-color: black;
+            h1,
+            h2,
+            h3,
+            .item-title,
+            .role-tag {
+                color: black !important;
+            }
+
+            .role-tag {
+                border-color: black;
+                background: transparent;
+            }
+
+            section h2::after {
+                background: #eee;
+            }
+
+            .item-date,
+            .skill-pill {
+                color: #333 !important;
+                border-color: #ddd;
+                background: transparent;
+            }
+
+            .contact-info a,
+            .item-desc,
+            .bio-summary,
+            p {
+                color: #444 !important;
+            }
+
+            .qr-item img {
+                filter: none;
+                border-color: #eee;
             }
 
             .download-btn {
@@ -243,81 +375,79 @@
 
     <div class="container">
         <header>
-            <h1>Gaurav Agarwal</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 1rem;">Frontend Developer & UI/UX Enthusiast</p>
+            <div class="role-tag">Frontend Developer & AI Prompt Engineer</div>
+            <h1>Gaurav<br>Agarwal</h1>
             <div class="contact-info">
                 <span>📍 Gwalior, Madhya Pradesh</span>
-                <a href="mailto:gauravagldeveloper28@gmail.com"
-                    style="color: inherit; text-decoration: none; transition: color 0.3s;">📧
-                    gauravagldeveloper28@gmail.com</a>
-                <a href="https://github.com/Gauravdev28" target="_blank"
-                    style="color: inherit; text-decoration: none; transition: color 0.3s;">🔗 github.com/Gauravdev28</a>
-                <a href="https://www.linkedin.com/in/gauravvagl" target="_blank"
-                    style="color: inherit; text-decoration: none; transition: color 0.3s;">💼
-                    linkedin.com/in/gauravvagl</a>
+                <a href="mailto:gauravagldeveloper28@gmail.com">📧 gauravagldeveloper28@gmail.com</a>
+                <a href="https://github.com/Gauravdev28" target="_blank">🔗 github.com/Gauravdev28</a>
+                <a href="https://www.linkedin.com/in/gauravvagl" target="_blank">💼 linkedin.com/in/gauravvagl</a>
             </div>
         </header>
 
         <section>
-            <h2>Professional Summary</h2>
-            <p style="color: var(--text-muted);">
+            <h2>Summary</h2>
+            <p class="bio-summary">
                 Aspiring Frontend Developer and enthusiastic learner with a growing command of HTML, CSS, JavaScript,
                 and C.
                 I am dedicated to kickstarting my career by continuously upskilling and applying my knowledge to build
                 real-world projects.
                 With a strong work ethic and a 'learning-by-doing' mindset, I leverage my skills in AI Prompt
                 Engineering to accelerate development.
-                I am eager to bring my passion for clean code and creative problem-solving to a dynamic team where I can
-                contribute and evolve as a professional.
+                I am eager to contribute to a dynamic team where I can evolve as a professional.
             </p>
         </section>
 
         <section>
-            <h2>Technical Skills</h2>
+            <h2>Technical Stack</h2>
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3>Web Development</h3>
-                    <ul class="skill-list">
-                        <li>HTML5 & CSS3</li>
-                        <li>JavaScript</li>
-                    </ul>
+                    <div class="skill-list">
+                        <span class="skill-pill">HTML5</span>
+                        <span class="skill-pill">CSS3</span>
+                        <span class="skill-pill">JavaScript</span>
+                        <span class="skill-pill">UI/UX Design</span>
+                    </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <ul class="skill-list">
-                        <li>C Language</li>
-                    </ul>
+                    <h3>Core Programming</h3>
+                    <div class="skill-list">
+                        <span class="skill-pill">C Language</span>
+                    </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Specialized Skills</h3>
-                    <ul class="skill-list">
-                        <li>AI Prompt Engineering</li>
-                    </ul>
+                    <h3>Emerging Tech</h3>
+                    <div class="skill-list">
+                        <span class="skill-pill">AI Prompt Engineering</span>
+                        <span class="skill-pill">AI Logic Design</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2>Featured Projects</h2>
+            <h2>Featured Ventures</h2>
 
             <div class="project-item">
                 <div class="item-header">
-                    <span class="item-title">Flowcode</span>
+                    <span class="item-title">CLEARSTIX | E-Commerce</span>
+                    <span class="item-date">Entrepreneurship</span>
                 </div>
-                <p style="color: var(--text-muted);">
-                    An intelligent tool that automatically converts C programming code into visual flowcharts for
-                    better logic visualization. Built using JavaScript, Mermaid.js, and Regex for parsing C code
-                    and generating interactive flowchart diagrams.
+                <p class="item-desc">
+                    A premium e-commerce platform focused on high-quality customized products. Built with a focus on
+                    seamless user journey and cinematic presentation.
                 </p>
             </div>
 
             <div class="project-item">
                 <div class="item-header">
-                    <span class="item-title">Portfolio Website</span>
+                    <span class="item-title">Flowcode</span>
+                    <span class="item-date">2025</span>
                 </div>
-                <p style="color: var(--text-muted);">
-                    Designed and developed a premium personal portfolio website. Features include a modern dark theme,
-                    glassmorphism effects, responsive layout, and interactive elements using vanilla JavaScript.
+                <p class="item-desc">
+                    An intelligent tool that automatically converts C programming code into visual flowcharts for
+                    better logic visualization. Built using JavaScript and Mermaid.js.
                 </p>
             </div>
         </section>
@@ -327,15 +457,15 @@
             <div class="experience-item">
                 <div class="item-header">
                     <span class="item-title">Web Development Intern</span>
-                    <span class="item-date">CodSoft</span>
+                    <span class="item-date">CodSoft | 2024</span>
                 </div>
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">
+                <p class="item-desc">
                     Completed a virtual internship focusing on web development tasks. Built responsive landing pages and
-                    interactive web applications using HTML, CSS, and JavaScript.
+                    interactive web applications.
                 </p>
                 <a href="#" target="_blank"
-                    style="color: var(--primary-purple); text-decoration: none; font-size: 0.9rem; border-bottom: 1px dashed var(--primary-purple);">🔗
-                    View Certificate</a>
+                    style="color: var(--accent-blue); text-decoration: none; font-size: 0.8rem; border-bottom: 1px dashed var(--accent-blue); margin-top: 1rem; display: inline-block; font-family: var(--font-mono);">VIEW
+                    CERTIFICATE</a>
             </div>
         </section>
 
@@ -343,32 +473,30 @@
             <h2>Education</h2>
             <div class="experience-item">
                 <div class="item-header">
-                    <span class="item-title">Bachelor of Technology in Computer Science</span>
-                    <span class="item-date">2025 - 2029</span>
+                    <span class="item-title">B.Tech - Computer Science</span>
+                    <span class="item-date">2021 - 2025</span>
                 </div>
-                <p style="color: var(--text-muted);">ITM University Gwalior</p>
+                <p class="item-desc">ITM University Gwalior</p>
             </div>
         </section>
 
         <section style="page-break-inside: avoid;">
-            <h2>Scan to Connect</h2>
-            <div style="display: flex; gap: 2rem; margin-top: 1rem;">
-                <div style="text-align: center;">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://github.com/Gauravdev28&color=7c3aed&bgcolor=030014"
-                        alt="GitHub QR Code"
-                        style="border: 2px solid var(--glass-border); border-radius: 10px; padding: 5px;">
-                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">GitHub</p>
+            <h2>Connect</h2>
+            <div class="qr-section">
+                <div class="qr-item">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://github.com/Gauravdev28&color=ffffff&bgcolor=000000"
+                        alt="GitHub QR">
+                    <p>GitHub</p>
                 </div>
-                <div style="text-align: center;">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.linkedin.com/in/gauravvagl&color=7c3aed&bgcolor=030014"
-                        alt="LinkedIn QR Code"
-                        style="border: 2px solid var(--glass-border); border-radius: 10px; padding: 5px;">
-                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">LinkedIn</p>
+                <div class="qr-item">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.linkedin.com/in/gauravvagl&color=ffffff&bgcolor=000000"
+                        alt="LinkedIn QR">
+                    <p>LinkedIn</p>
                 </div>
             </div>
         </section>
 
-        <a href="javascript:window.print()" class="download-btn">Download PDF</a>
+        <a href="javascript:window.print()" class="download-btn">Generate PDF</a>
     </div>
 
 </body>
