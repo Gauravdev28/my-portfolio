@@ -31,10 +31,166 @@ body::before {
     width: 100%;
     height: 100%;
     opacity: 0.18;
-    /* Even more cinematic grain */
+    /* Cinematic film-grain */
     pointer-events: none;
     z-index: 9999;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Welcome Overlay Styles */
+.welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s cubic-bezier(0.77, 0, 0.175, 1);
+    overflow: hidden;
+}
+
+.welcome-overlay.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.welcome-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10rem;
+    max-width: 1400px;
+    width: 90%;
+    align-items: center;
+}
+
+.welcome-visuals {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-year {
+    position: absolute;
+    left: -100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: var(--text-muted);
+}
+
+.welcome-year .line {
+    width: 1px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.welcome-circle-bg {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 209, 255, 0.15) 0%, transparent 70%);
+    filter: blur(50px);
+    z-index: -1;
+    top: -100px;
+    right: -100px;
+}
+
+.welcome-img-container {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 40px;
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+    background: #111;
+}
+
+.welcome-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.2);
+}
+
+.welcome-text-side {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.welcome-header-line {
+    width: 100px;
+    height: 1px;
+    background: #fff;
+}
+
+.welcome-title {
+    font-family: var(--font-heading);
+    font-size: 8rem;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -4px;
+    color: #fff;
+}
+
+.welcome-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 500px;
+}
+
+.welcome-name {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--accent-blue);
+    font-style: italic;
+    font-weight: 500;
+}
+
+.welcome-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.enter-btn {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+    align-self: flex-end;
+}
+
+.enter-btn:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: #000;
+    transform: translateX(10px);
+}
+
+.enter-btn svg {
+    width: 24px;
+    height: 24px;
 }
 
 /* Atmospheric Cinematic Background Glows */
@@ -56,6 +212,30 @@ body::before {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 4rem;
+}
+
+/* Main Content Reveal Animation */
+main {
+    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.2s ease;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+body:has(.welcome-overlay.hidden) main {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Navbar Reveal */
+#navbar {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.8s ease 0.5s;
+}
+
+body:has(.welcome-overlay.hidden) #navbar {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Navbar */
