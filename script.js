@@ -25,6 +25,30 @@ if (enterBtn && welcomeScreen) {
 // Initial state: prevent scrolling while welcome screen is active
 document.body.style.overflow = 'hidden';
 
+// Scroll-Triggered Glow Effect (Intersection Observer)
+const observerOptions = {
+    threshold: 0.2
+};
+
+const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+        } else {
+            // Optional: remove class when scrolling away if you want it to re-trigger
+            // entry.target.classList.remove('in-view');
+        }
+    });
+}, observerOptions);
+
+// Observe all relevant images
+document.addEventListener('DOMContentLoaded', () => {
+    const imagesToObserve = document.querySelectorAll('.hero-img, .bio-img');
+    imagesToObserve.forEach(img => {
+        imageObserver.observe(img);
+    });
+});
+
 // Navigation Scroll Effect
 window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');

@@ -687,13 +687,22 @@ nav.scrolled {
     height: auto;
     z-index: 1;
     object-fit: contain;
-    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
     filter: grayscale(1) contrast(1.1) brightness(0.8);
+    opacity: 0.5;
+    transform: translateY(30px);
+}
+
+/* Scroll-triggered state */
+.hero-img.in-view {
+    filter: grayscale(0) contrast(1) brightness(1.1) drop-shadow(0 20px 40px rgba(0, 209, 255, 0.2));
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .hero-image-container:hover .hero-img {
-    transform: translateY(-20px) scale(1.02);
-    filter: grayscale(0) contrast(1) brightness(1.1) drop-shadow(0 20px 40px rgba(0, 209, 255, 0.3));
+    transform: translateY(-10px) scale(1.02);
+    filter: grayscale(0) contrast(1.1) brightness(1.1) drop-shadow(0 20px 50px rgba(0, 209, 255, 0.4));
 }
 
 .image-glow {
@@ -732,12 +741,21 @@ nav.scrolled {
     position: relative;
     z-index: 2;
     filter: grayscale(1) contrast(1.1) brightness(0.8);
-    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    opacity: 0.5;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Scroll-triggered state */
+.bio-img.in-view {
+    filter: grayscale(0) contrast(1.1) brightness(1.1);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .bio-image-wrapper:hover .bio-img {
-    transform: translateY(-15px) scale(1.02);
-    filter: grayscale(0) contrast(1) brightness(1.1);
+    transform: translateY(-10px) scale(1.02);
+    filter: grayscale(0) contrast(1.1) brightness(1.1);
 }
 
 .dot-grid {
