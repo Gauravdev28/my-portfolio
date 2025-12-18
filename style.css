@@ -23,7 +23,6 @@ body {
     position: relative;
 }
 
-/* Very subtle Grain Overlay to mimic reference without looking "dirty" */
 body::before {
     content: "";
     position: fixed;
@@ -43,7 +42,6 @@ body::before {
     padding: 0 4rem;
 }
 
-/* Navbar Style */
 nav {
     position: fixed;
     top: 0;
@@ -51,6 +49,14 @@ nav {
     padding: 2.5rem 0;
     z-index: 1000;
     background: transparent;
+    transition: all 0.4s ease;
+}
+
+nav.scrolled {
+    padding: 1.5rem 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-content {
@@ -69,6 +75,7 @@ nav {
     color: #000;
     padding: 0.8rem 1.5rem;
     font-weight: 700;
+    text-decoration: none;
 }
 
 .nav-links {
@@ -85,6 +92,35 @@ nav {
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--accent-blue);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 5px;
+    margin-left: auto;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 2px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .nav-line-decorator {
@@ -113,7 +149,6 @@ nav {
     border-radius: 50%;
 }
 
-/* Hero Section */
 .hero {
     height: 100vh;
     display: flex;
@@ -244,7 +279,6 @@ nav {
     border-radius: 50%;
 }
 
-/* Projects Section Styling */
 #projects {
     padding: 12rem 0;
 }
@@ -342,6 +376,30 @@ nav {
 }
 
 @media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: #000;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        transition: right 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
     .hero {
         height: auto;
         padding: 120px 0 60px;
@@ -355,7 +413,7 @@ nav {
     .hero-image-container {
         order: -1;
         justify-content: center;
-        height: 50vh;
+        height: 40vh;
     }
 
     .hero-name {
@@ -364,10 +422,6 @@ nav {
 
     .hero-desc {
         margin: 0 auto;
-    }
-
-    .nav-links {
-        display: none;
     }
 
     .bottom-info {

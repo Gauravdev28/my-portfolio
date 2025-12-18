@@ -14,10 +14,15 @@
 </head>
 
 <body>
-    <nav>
+    <nav id="navbar">
         <div class="container nav-content">
-            <div class="nav-logo">ONLINE PORTOFOLIO</div>
-            <div class="nav-links">
+            <a href="#" class="nav-logo">ONLINE PORTOFOLIO</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
                 <a href="#about">ABOUT ME</a>
                 <a href="#education">EDUCATION</a>
                 <a href="#experience">EXPERIENCE</a>
@@ -56,7 +61,33 @@
             </div>
         </section>
 
-        <section id="projects" class="container">
+        <section id="about" class="container" style="padding: 10rem 0;">
+            <h2 class="section-title">About Me</h2>
+            <div class="hero-desc">
+                <p>I am a dedicated and aspiring developer based in Gwalior, fueled by a relentless passion for learning
+                    and growth. As a beginner in the tech world, I view every day as an opportunity to master something
+                    new.</p>
+                <br>
+                <p>My approach is simple: learn, build, and improve. I am committed to turning my knowledge into
+                    functional, beautiful digital experiences.</p>
+            </div>
+        </section>
+
+        <section id="education" class="container" style="padding: 10rem 0;">
+            <h2 class="section-title">Education</h2>
+            <div class="hero-desc">
+                <p>Building a strong foundation in Computer Science and Engineering.</p>
+            </div>
+        </section>
+
+        <section id="experience" class="container" style="padding: 10rem 0;">
+            <h2 class="section-title">Experience</h2>
+            <div class="hero-desc">
+                <p>Aspiring developer actively working on hands-on projects and masterclasses.</p>
+            </div>
+        </section>
+
+        <section id="projects" class="container" style="padding: 10rem 0;">
             <h2 class="section-title">Selected Works</h2>
             <div id="projects-grid">
                 <div class="project-card">
@@ -75,7 +106,62 @@
                 </div>
             </div>
         </section>
+
+        <section id="contact" class="container" style="padding: 10rem 0; text-align: center;">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="project-actions" style="justify-content: center; margin-top: 2rem;">
+                <a href="https://github.com/Gauravdev28" target="_blank" class="btn">GITHUB</a>
+                <a href="https://linkedin.com/in/gauravvagl" target="_blank" class="btn">LINKEDIN</a>
+            </div>
+        </section>
     </main>
+
+    <div class="modal" id="codeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle" style="color:#000">Project Code</h3>
+                <button class="close-modal" onclick="closeModal()"
+                    style="background:none; border:none; color:#000; font-size:2rem; cursor:pointer;">&times;</button>
+            </div>
+            <div class="code-header" style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <span class="code-language" id="codeLanguage"
+                    style="color:var(--accent-blue); font-family:var(--font-mono);">JS</span>
+            </div>
+            <div class="code-container" style="background:#1a1a1a; padding:1.5rem; overflow-x:auto;">
+                <pre id="codeContent" style="color:#fff; font-family:var(--font-mono); font-size:0.9rem;"></pre>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 4px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+    </style>
 
     <script src="script.js"></script>
 </body>
