@@ -1,3 +1,9 @@
+// Forcing scroll to top on refresh
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
 // Welcome Screen Logic
 const welcomeScreen = document.getElementById('welcome-screen');
 const enterBtn = document.getElementById('enter-portfolio');
