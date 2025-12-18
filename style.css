@@ -488,35 +488,7 @@ nav.scrolled {
     transform: scale(1.05);
 }
 
-/* Contact Section */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 6rem;
-}
-
-.contact-info-list {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
-
-.contact-item h3 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: var(--accent-blue);
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-}
-
-.contact-item p,
-.contact-item a {
-    font-size: 1.8rem;
-    font-family: var(--font-heading);
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-}
+/* [REMOVED REDUNDANT OLD CONTACT GRID] */
 
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -541,23 +513,26 @@ nav.scrolled {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 .contact-icon-new {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 1rem;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1.5rem;
 }
 
 .contact-icon-new svg {
     width: 100%;
     height: 100%;
+    stroke: var(--accent-blue);
+    stroke-width: 1.5;
 }
 
 .contact-card-new h3 {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    /* Slightly larger for better readability */
     margin-bottom: 0.8rem;
     color: #fff;
     font-weight: 700;
@@ -565,9 +540,10 @@ nav.scrolled {
 
 .contact-card-new p {
     color: var(--text-muted);
-    font-size: 1rem;
-    margin: 0.1rem 0;
+    font-size: 1.1rem;
+    margin: 0.2rem 0;
     font-family: var(--font-main);
+    line-height: 1.4;
 }
 
 /* New Footer & Name Outline */
