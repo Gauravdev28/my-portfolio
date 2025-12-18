@@ -56,34 +56,6 @@ function initScrollAnimations() {
 
 // Project Codes Data
 const projectCodes = {
-    amazon: {
-        title: 'Amazon Clone',
-        language: 'HTML',
-        code: `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon Clone</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="logo"><img src="amazon-logo.png" alt="Amazon"></div>
-            <div class="search-bar"><input type="text" placeholder="Search Amazon"><button>Search</button></div>
-            <div class="nav-links"><a href="#">Account</a><a href="#">Cart</a></div>
-        </nav>
-    </header>
-    <main>
-        <section class="hero"><h1>Welcome to Amazon Clone</h1><p>Shop the best products at amazing prices</p></section>
-        <section class="products"><!-- Product cards here --></section>
-    </main>
-    <script src="script.js"><\/script>
-</body>
-</html>`,
-        preview: 'https://github.com/Gauravdev28'
-    },
     flowcode: {
         title: 'Flowcode',
         language: 'JavaScript',
@@ -105,40 +77,6 @@ function generateFlowchart(code) {
 }
 `,
         preview: 'flowcode/index.html'
-    },
-    portfolio: {
-        title: 'Portfolio Website',
-        language: 'HTML',
-        code: `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav>
-        <div class="logo">Portfolio</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <section class="hero">
-        <h1>Hi, I'm <span>Your Name</span></h1>
-        <p>Full Stack Developer & Designer</p>
-        <a href="#projects" class="cta-btn">View My Work</a>
-    </section>
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid"><!-- Project cards here --></div>
-    </section>
-    <script src="script.js"><\/script>
-</body>
-</html>`,
-        preview: 'index.html'
     }
 };
 
@@ -146,7 +84,7 @@ function generateFlowchart(code) {
 function viewCode(projectName) {
     const project = projectCodes[projectName];
     if (!project) return;
-    
+
     const modalTitle = document.getElementById('modalTitle');
     const codeLanguage = document.getElementById('codeLanguage');
     const codeContent = document.getElementById('codeContent');
@@ -168,7 +106,7 @@ function closeModal() {
 function copyCode() {
     const codeContent = document.getElementById('codeContent');
     if (!codeContent) return;
-    
+
     navigator.clipboard.writeText(codeContent.textContent).then(() => {
         const btn = document.querySelector('.copy-code-btn');
         if (btn) {
@@ -186,8 +124,8 @@ function copyCode() {
 function downloadCode(projectName) {
     const project = projectCodes[projectName];
     if (!project) return;
-    
-    const blob = new Blob([project.code], {type: 'text/html'});
+
+    const blob = new Blob([project.code], { type: 'text/html' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
