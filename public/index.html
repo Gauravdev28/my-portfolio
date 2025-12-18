@@ -364,6 +364,24 @@
     </style>
 
     <script src="script.js"></script>
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBtRjD8VQQp_-O4WR1nfuKD8mLuZzQlFsU",
+            authDomain: "portfolio-gauravagl.firebaseapp.com",
+            projectId: "portfolio-gauravagl",
+            storageBucket: "portfolio-gauravagl.firebasestorage.app",
+            messagingSenderId: "768472535848",
+            appId: "1:768472535848:web:eefea75563e1b46923361d",
+            measurementId: "G-HDF2M9GHJQ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
 </body>
 
 </html>

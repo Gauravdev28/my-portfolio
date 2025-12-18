@@ -50,7 +50,8 @@ body::before {
     align-items: center;
     justify-content: center;
     transition: all 1s cubic-bezier(0.77, 0, 0.175, 1);
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .welcome-overlay.hidden {
@@ -115,12 +116,12 @@ body::before {
 .welcome-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0;
+    gap: 4rem;
     max-width: 1400px;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     align-items: center;
-    padding: 0 8rem;
+    padding: 4rem 8rem;
     position: relative;
     z-index: 2;
 }
@@ -128,20 +129,20 @@ body::before {
 .welcome-visuals {
     position: relative;
     width: 100%;
-    height: 80%;
+    height: auto;
     display: flex;
     align-items: center;
 }
 
 .welcome-year-v {
     position: absolute;
-    left: -60px;
+    left: -80px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
     font-family: var(--font-mono);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     writing-mode: vertical-rl;
     color: #fff;
     font-weight: 700;
@@ -208,10 +209,10 @@ body::before {
 }
 
 .welcome-text-side {
-    padding-left: 4rem;
+    padding-left: 0;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 3rem;
 }
 
 .welcome-header-line-v {
@@ -584,7 +585,7 @@ nav.scrolled {
 
 .section-title {
     font-family: var(--font-heading);
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
@@ -620,10 +621,11 @@ nav.scrolled {
 
 /* Hero */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
+    padding: 120px 0 80px;
 }
 
 .hero-grid {
@@ -636,7 +638,7 @@ nav.scrolled {
 
 .hero-name {
     font-family: var(--font-heading);
-    font-size: 6.5rem;
+    font-size: clamp(3rem, 8vw, 6.5rem);
     font-weight: 700;
     line-height: 0.85;
     margin-bottom: 2.5rem;
@@ -673,15 +675,21 @@ nav.scrolled {
 
 .hero-image-container {
     position: relative;
+    overflow: hidden;
 }
 
 .hero-img {
-    width: 120%;
+    width: 100%;
     height: auto;
     filter: grayscale(1) contrast(1.2) brightness(0.9);
     z-index: 1;
     mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0));
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.hero-image-container:hover .hero-img {
+    transform: scale(1.05);
 }
 
 .image-glow {
@@ -890,7 +898,7 @@ nav.scrolled {
 .projects-main-grid {
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
-    gap: 10rem;
+    gap: clamp(4rem, 8vw, 10rem);
     align-items: flex-start;
     position: relative;
     z-index: 1;
